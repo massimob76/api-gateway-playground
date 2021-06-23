@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "cloudwatch_logging" {
     ]
 
     resources = [
-      aws_cloudwatch_log_group.echo_query_param.arn,
+      "arn:aws:logs:*:*:*",
     ]
   }
 }
