@@ -28,7 +28,7 @@ resource "aws_lambda_function" "echo_query_param" {
   filename      = data.archive_file.echo_query_param.output_path
   function_name = local.lambda_function_name
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "HandleRequest"
+  handler       = local.lambda_exec_name
   source_code_hash = data.archive_file.echo_query_param.output_base64sha256
   runtime = "go1.x"
 

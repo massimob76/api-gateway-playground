@@ -1,19 +1,21 @@
 package main
 
 import (
-    "fmt"
-    "context"
-    "github.com/aws/aws-lambda-go/lambda"
+	"context"
+	"fmt"
+
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 type MyEvent struct {
-    Name string `json:"name"`
+	Name string `json:"name"`
 }
 
-func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
-    return fmt.Sprintf("Hello %s!", name.Name ), nil
+func HandleRequest(ctx context.Context, event MyEvent) (string, error) {
+	fmt.Printf("event: %v", event)
+	return fmt.Sprintf("Hello %s!", event.Name), nil
 }
 
 func main() {
-    lambda.Start(HandleRequest)
+	lambda.Start(HandleRequest)
 }
